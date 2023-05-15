@@ -1,0 +1,11 @@
+{
+    "[jsonc]": {
+        "editor.defaultFormatter": "hookyqr.beautify"
+    },
+    "python.testing.pytestArgs": [
+        "views"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
+}

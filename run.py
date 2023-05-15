@@ -5,17 +5,19 @@ import random
 
 gameBoard = ["-", "-", "-",
              "-", "-", "-",
-            "-", "-", "-"]
+             "-", "-", "-"]
 
 game = True
 winner = None
 player = "X"
+
 
 # game structure
 def printBoard(gameBoard):
     print(gameBoard[0] + " | " + gameBoard[1] + " | " + gameBoard[2])
     print(gameBoard[3] + " | " + gameBoard[4] + " | " + gameBoard[5])
     print(gameBoard[6] + " | " + gameBoard[7] + " | " + gameBoard[8])
+
 
 # player input
 def playerInput(gameBoard):
@@ -24,6 +26,7 @@ def playerInput(gameBoard):
         gameBoard[inp-1] = player
     else:
         print("Player is already at that spot.")
+
 
 # winning or tying
 def checkHorizontle(gameBoard):
@@ -37,6 +40,7 @@ def checkHorizontle(gameBoard):
     elif gameBoard[6] == gameBoard[7] == gameBoard[8] and gameBoard[6] != "-":
         winner = gameBoard[6]
         return True
+
 
 def checkRow(gameBoard):
     global winner
@@ -86,8 +90,9 @@ def checkIfTie(gameBoard):
         print("It is a tie!")
         game = False
 
+
 # change player
-def changePlayer():
+def changePlayer(gameBoard):
     global player
     if player == "X":
         player = "O"
@@ -100,19 +105,16 @@ def computer(gameBoard):
         position = random.randint(0, 8)
         if gameBoard[position] == "-":
             gameBoard[position] = "O"
-            changePlayer()
+            changePlayer(gameBoard)
 
 
-
-# main 
-
+# main
 while game:
     printBoard(gameBoard)
     playerInput(gameBoard)
     checkIfWin(gameBoard)
     checkIfTie(gameBoard)
-    changePlayer()
+    changePlayer(gameBoard)
     computer(gameBoard)
     checkIfWin(gameBoard)
     checkIfTie(gameBoard)
-    
