@@ -3,7 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import random
 
-boardGame = ["-", "-", "-",
+gameBoard = ["-", "-", "-",
              "-", "-", "-",
             "-", "-", "-"]
 
@@ -12,16 +12,23 @@ winner = None
 player = "X"
 
 # game structure
-def printBoard(board):
-    print(board[0] + " | " + board[1] + " | " + board[2])
-    print(board[3] + " | " + board[4] + " | " + board[5])
-    print(board[6] + " | " + board[7] + " | " + board[8])
+def printBoard(gameBoard):
+    print(gameBoard[0] + " | " + gameBoard[1] + " | " + gameBoard[2])
+    print(gameBoard[3] + " | " + gameBoard[4] + " | " + gameBoard[5])
+    print(gameBoard[6] + " | " + gameBoard[7] + " | " + gameBoard[8])
 
 # player input
+def playerInput(gameBoard):
+    inp = int(input("Select a spot 1-9: "))
+    if inp >= 1 and inp <= 9 and gameBoard[inp-1] == "-":
+        gameBoard[inp-1] = player
+    else:
+        print("Player is already at that spot.")
 
 # winning or tying
 
 # change player
 
-
-print(board_game)
+while game:
+    printBoard(gameBoard)
+    input(gameBoard)
