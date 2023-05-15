@@ -26,9 +26,71 @@ def playerInput(gameBoard):
         print("Player is already at that spot.")
 
 # winning or tying
+def checkHorizontle(gameBoard):
+    global winner
+    if gameBoard[0] == gameBoard[1] == gameBoard[2] and gameBoard[0] != "-":
+        winner = gameBoard[0]
+        return True
+    elif gameBoard[3] == gameBoard[4] == gameBoard[5] and gameBoard[3] != "-":
+        winner = gameBoard[3]
+        return True
+    elif gameBoard[6] == gameBoard[7] == gameBoard[8] and gameBoard[6] != "-":
+        winner = gameBoard[6]
+        return True
+
+def checkRow(gameBoard):
+    global winner
+    if gameBoard[0] == gameBoard[3] == gameBoard[6] and gameBoard[0] != "-":
+        winner = gameBoard[0]
+        return True
+    elif gameBoard[1] == gameBoard[4] == gameBoard[7] and gameBoard[1] != "-":
+        winner = gameBoard[1]
+        return True
+    elif gameBoard[2] == gameBoard[5] == gameBoard[8] and gameBoard[2] != "-":
+        winner = gameBoard[3]
+        return True
+
+
+def checkDiagonal(gameBoard):
+    global winner
+    if gameBoard[0] == gameBoard[4] == gameBoard[8] and gameBoard[0] != "-":
+        winner = gameBoard[0]
+        return True
+    elif gameBoard[2] == gameBoard[4] == gameBoard[6] and gameBoard[4] != "-":
+        winner = gameBoard[2]
+        return True
+
+
+def checkIfWin(gameBoard):
+    global game
+    if checkHorizontle(gameBoard):
+        printBoard(gameBoard)
+        print(f"The winner is {winner}!")
+        game = False
+
+    elif checkRow(gameBoard):
+        printBoard(gameBoard)
+        print(f"The winner is {winner}!")
+        game = False
+
+    elif checkDiagonal(gameBoard):
+        printBoard(gameBoard)
+        print(f"The winner is {winner}!")
+        game = False
+
+
+def checkIfTie(gameBoard):
+    global game
+    if "-" not in gameBoard:
+        printBoard(gameBoard)
+        print("It is a tie!")
+        game = False
 
 # change player
 
 while game:
     printBoard(gameBoard)
-    input(gameBoard)
+    playerInput(gameBoard)
+    checkIfWin(gameBoard)
+    checkIfTie(gameBoard)
+    
