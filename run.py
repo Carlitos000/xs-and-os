@@ -87,10 +87,32 @@ def checkIfTie(gameBoard):
         game = False
 
 # change player
+def changePlayer():
+    global player
+    if player == "X":
+        player = "O"
+    else:
+        player = "X"
+
+
+def computer(gameBoard):
+    while player == "O":
+        position = random.randint(0, 8)
+        if gameBoard[position] == "-":
+            gameBoard[position] = "O"
+            changePlayer()
+
+
+
+# main 
 
 while game:
     printBoard(gameBoard)
     playerInput(gameBoard)
+    checkIfWin(gameBoard)
+    checkIfTie(gameBoard)
+    changePlayer()
+    computer(gameBoard)
     checkIfWin(gameBoard)
     checkIfTie(gameBoard)
     
